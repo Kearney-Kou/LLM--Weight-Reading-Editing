@@ -1,0 +1,24 @@
+# ---- Weights: distributed as a GitHub Release asset (weights.zip), never in git history ----
+*.npz
+*.npy
+# ...except the small per-utterance result counts (1-D arrays, no weights, no features)
+!3_评估_勿给编辑者/结果/*counts*.npz
+!3_评估_勿给编辑者/结果/per_utt_correct.npz
+
+# ---- Course / competition data: cannot be redistributed ----
+数据/
+data/
+
+# ---- The release asset itself, if downloaded into the repo ----
+weights.zip
+
+# ---- Local-only to-do list (personal, not for the public repository) ----
+发布前检查单.md
+
+# ---- macOS ----
+.DS_Store
+._*
+
+# ---- Python ----
+__pycache__/
+*.pyc

@@ -1,0 +1,1 @@
+REF fresh lr1e-3 +2000 steps, full dev A acc 0.7007

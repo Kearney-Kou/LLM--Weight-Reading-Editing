@@ -1,0 +1,1 @@
+REF lr1e-4 +2000 steps, full dev A acc 0.7269

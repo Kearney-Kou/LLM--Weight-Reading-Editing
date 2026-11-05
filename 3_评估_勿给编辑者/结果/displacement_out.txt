@@ -1,0 +1,20 @@
+每个权重的量：w_rms = 被试权重的 RMS；d_rms = 位移 RMS；radial = 径向分量（负 = 朝 0）；tangential = 切向分量；wd = weight decay 能解释的径向位移；η√T = 纯随机游走的预期位移
+lr1e-4 fresh, +2000        far   w_rms 0.0400  d_rms 0.0056  radial -0.0015  tangential 0.0054  wd -0.00008  radial/wd  18.9  |radial|/tangential 0.28  η√T 0.0045  范数变化 -2.8%  朝 0 的行 100%
+lr1e-4 fresh, +2000        near  w_rms 0.1171  d_rms 0.0055  radial +0.0001  tangential 0.0055  wd -0.00023  radial/wd  -0.4  |radial|/tangential 0.02  η√T 0.0045  范数变化 +0.2%  朝 0 的行 67%
+lr1e-4 fresh, +4000        far   w_rms 0.0400  d_rms 0.0081  radial -0.0025  tangential 0.0077  wd -0.00016  radial/wd  15.9  |radial|/tangential 0.33  η√T 0.0063  范数变化 -4.4%  朝 0 的行 100%
+lr1e-4 fresh, +4000        near  w_rms 0.1171  d_rms 0.0081  radial +0.0000  tangential 0.0081  wd -0.00047  radial/wd  -0.1  |radial|/tangential 0.01  η√T 0.0063  范数变化 +0.3%  朝 0 的行 69%
+lr1e-4 fresh, +6000        far   w_rms 0.0400  d_rms 0.0099  radial -0.0033  tangential 0.0093  wd -0.00024  radial/wd  13.7  |radial|/tangential 0.35  η√T 0.0077  范数变化 -5.2%  朝 0 的行 100%
+lr1e-4 fresh, +6000        near  w_rms 0.1171  d_rms 0.0101  radial -0.0000  tangential 0.0101  wd -0.00070  radial/wd   0.0  |radial|/tangential 0.00  η√T 0.0077  范数变化 +0.4%  朝 0 的行 71%
+lr1e-4 fresh, +8000        far   w_rms 0.0400  d_rms 0.0112  radial -0.0036  tangential 0.0106  wd -0.00032  radial/wd  11.2  |radial|/tangential 0.34  η√T 0.0089  范数变化 -5.2%  朝 0 的行 100%
+lr1e-4 fresh, +8000        near  w_rms 0.1171  d_rms 0.0116  radial -0.0001  tangential 0.0116  wd -0.00093  radial/wd   0.1  |radial|/tangential 0.01  η√T 0.0089  范数变化 +0.4%  朝 0 的行 74%
+lr1e-4 fresh, +10000       far   w_rms 0.0400  d_rms 0.0111  radial -0.0033  tangential 0.0106  wd -0.00040  radial/wd   8.4  |radial|/tangential 0.31  η√T 0.0100  范数变化 -4.5%  朝 0 的行 100%
+lr1e-4 fresh, +10000       near  w_rms 0.1171  d_rms 0.0120  radial -0.0001  tangential 0.0120  wd -0.00116  radial/wd   0.1  |radial|/tangential 0.01  η√T 0.0100  范数变化 +0.4%  朝 0 的行 76%
+lr1e-4 same state, +2000   far   w_rms 0.0400  d_rms 0.0055  radial -0.0015  tangential 0.0053  wd -0.00008  radial/wd  18.9  |radial|/tangential 0.29  η√T 0.0045  范数变化 -2.9%  朝 0 的行 100%
+lr1e-4 same state, +2000   near  w_rms 0.1171  d_rms 0.0054  radial +0.0001  tangential 0.0054  wd -0.00023  radial/wd  -0.6  |radial|/tangential 0.03  η√T 0.0045  范数变化 +0.2%  朝 0 的行 68%
+lr1e-3 same state, +2000   far   w_rms 0.0400  d_rms 0.0301  radial -0.0089  tangential 0.0287  wd -0.00079  radial/wd  11.3  |radial|/tangential 0.31  η√T 0.0447  范数变化 +5.8%  朝 0 的行 100%
+lr1e-3 same state, +2000   near  w_rms 0.1171  d_rms 0.0309  radial +0.0055  tangential 0.0304  wd -0.00232  radial/wd  -2.4  |radial|/tangential 0.18  η√T 0.0447  范数变化 +7.9%  朝 0 的行 50%
+lr1e-3 same state, +4000   far   w_rms 0.0400  d_rms 0.0372  radial -0.0127  tangential 0.0350  wd -0.00157  radial/wd   8.1  |radial|/tangential 0.36  η√T 0.0632  范数变化 +11.0%  朝 0 的行 100%
+lr1e-3 same state, +4000   near  w_rms 0.1171  d_rms 0.0417  radial +0.0109  tangential 0.0402  wd -0.00459  radial/wd  -2.4  |radial|/tangential 0.27  η√T 0.0632  范数变化 +14.6%  朝 0 的行 45%
+
+远端位移 RMS 之比（第 10000 步 / 第 2000 步）：2.00（随机游走 √5 = 2.24，匀速漂移 5）；中心附近：2.17
+按预先写定的判断规则： 有一个弱的、指向 0 的拉力，但被随机运动主导 ； 位移按 √T 增长，和随机游走一致
