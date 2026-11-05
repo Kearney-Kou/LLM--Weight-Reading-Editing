@@ -1,0 +1,17 @@
+English translation of `controls_out.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+original network B 0.7005
+(1) remove feature dimension f=26: on B +0.0009
+(1) remove feature dimension f=1: on B -0.0631
+(1) remove feature dimension f=3: on B -0.0445
+(1) remove feature dimension f=4: on B -0.0335
+(1) remove feature dimension f=5: on B -0.0246
+(1) remove feature dimension f=15: on B -0.0023
+(1) remove feature dimension f=16: on B -0.0011
+(1) remove feature dimension f=20: on B -0.0003
+(1) remove feature dimension f=22: on B +0.0004
+(2) remove |dt|=30..38 (18 offsets): on B +0.0041
+(2) remove |dt|=20..28 (18 offsets): on B -0.0004
+(2) remove |dt|=32..40 (18 offsets): on B +0.0038

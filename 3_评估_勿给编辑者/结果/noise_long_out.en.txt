@@ -1,0 +1,45 @@
+English translation of `noise_long_out.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+Consistency check: max absolute difference between the newly run step 2000 and reference_lr1e-4_plus2000steps.npz {'W1': 0.0, 'W2': 0.0, 'W3': 0.0, 'b1': 0.0, 'b2': 0.0, 'b3': 0.0}
+  step 2000 orig@B vs third-version fresh_lr1e-4_orig@B identical per utterance: True
+  step 2000 H1@B vs third-version fresh_lr1e-4_H1@B identical per utterance: True
+  step 2000 H1nocomp@B vs third-version fresh_lr1e-4_H1nocomp@B identical per utterance: True
+  step 2000 orig@C vs third-version fresh_lr1e-4_orig@C identical per utterance: True
+  step 2000 H1@C vs third-version fresh_lr1e-4_H1@C identical per utterance: True
+  step 2000 H1nocomp@C vs third-version fresh_lr1e-4_H1nocomp@C identical per utterance: True
+
+step 2000: far floor relative to subject -2.9%, |Δt|≤10 relative to subject -0.1%, H1 selected [-37, -36, -35, -34, -33, -32, -31, -30, -29, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+    B: original network  72.90  H1        Δ +0.21  utt-CI [+0.16, +0.27]  spk-CI [+0.16, +0.27]
+    B: original network  72.90  H1nocomp  Δ +0.18  utt-CI [+0.13, +0.24]  spk-CI [+0.14, +0.23]
+    C: original network  73.99  H1        Δ +0.18  utt-CI [+0.14, +0.22]  spk-CI [+0.14, +0.22]
+    C: original network  73.99  H1nocomp  Δ +0.13  utt-CI [+0.09, +0.17]  spk-CI [+0.09, +0.17]
+
+step 4000: far floor relative to subject -4.5%, |Δt|≤10 relative to subject -0.2%, H1 selected [-38, -37, -36, -35, -34, -33, -32, -31, -30, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+    B: original network  73.43  H1        Δ +0.17  utt-CI [+0.12, +0.23]  spk-CI [+0.12, +0.24]
+    B: original network  73.43  H1nocomp  Δ +0.11  utt-CI [+0.05, +0.16]  spk-CI [+0.05, +0.17]
+    C: original network  74.46  H1        Δ +0.14  utt-CI [+0.10, +0.18]  spk-CI [+0.10, +0.18]
+    C: original network  74.46  H1nocomp  Δ +0.07  utt-CI [+0.03, +0.11]  spk-CI [+0.03, +0.11]
+
+step 6000: far floor relative to subject -5.3%, |Δt|≤10 relative to subject -0.2%, H1 selected [-38, -37, -36, -35, -34, -33, -32, -31, -30, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+    B: original network  73.56  H1        Δ +0.20  utt-CI [+0.14, +0.25]  spk-CI [+0.15, +0.25]
+    B: original network  73.56  H1nocomp  Δ +0.13  utt-CI [+0.08, +0.18]  spk-CI [+0.08, +0.18]
+    C: original network  74.71  H1        Δ +0.12  utt-CI [+0.08, +0.16]  spk-CI [+0.08, +0.16]
+    C: original network  74.71  H1nocomp  Δ +0.06  utt-CI [+0.02, +0.09]  spk-CI [+0.01, +0.10]
+
+step 8000: far floor relative to subject -5.2%, |Δt|≤10 relative to subject -0.1%, H1 selected [-38, -37, -36, -35, -34, -33, -32, -31, -30, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+    B: original network  73.72  H1        Δ +0.20  utt-CI [+0.15, +0.25]  spk-CI [+0.14, +0.27]
+    B: original network  73.72  H1nocomp  Δ +0.12  utt-CI [+0.07, +0.18]  spk-CI [+0.06, +0.19]
+    C: original network  74.82  H1        Δ +0.14  utt-CI [+0.10, +0.18]  spk-CI [+0.10, +0.18]
+    C: original network  74.82  H1nocomp  Δ +0.09  utt-CI [+0.05, +0.13]  spk-CI [+0.05, +0.13]
+
+step 10000: far floor relative to subject -4.6%, |Δt|≤10 relative to subject +0.1%, H1 selected [-38, -37, -36, -35, -34, -33, -32, -31, -30, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+    B: original network  73.75  H1        Δ +0.16  utt-CI [+0.11, +0.21]  spk-CI [+0.10, +0.22]
+    B: original network  73.75  H1nocomp  Δ +0.09  utt-CI [+0.03, +0.14]  spk-CI [+0.03, +0.14]
+    C: original network  74.83  H1        Δ +0.14  utt-CI [+0.10, +0.18]  spk-CI [+0.10, +0.18]
+    C: original network  74.83  H1nocomp  Δ +0.10  utt-CI [+0.06, +0.14]  spk-CI [+0.05, +0.14]
+
+Subject to step 10000, RMS size and RMS displacement of a single weight: {'far_rms_weight': 0.04, 'far_rms_change': 0.0111, 'near_rms_weight': 0.1171, 'near_rms_change': 0.012}
+
+According to the decision rules written in advance (step 10000, 4 cells): optimization did not remove the obstacle within this training (intervals of all 4 cells > 0)

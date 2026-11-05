@@ -1,0 +1,50 @@
+English translation of `confirm_all.log`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+H2 selected feature 26 ; H1 selected offsets [-37, -36, -35, -34, -33, -32, -31, -30, -29, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+done n1_original@C 0.711
+done n1_ed2A@C 0.7149
+done n1_ed2A_E12@C 0.715
+done n1_ed2B@C 0.7128
+done n1_ed2B_E1@C 0.7118
+done n1_magprune22@C 0.7113
+done n1_combo_2A_f26@C 0.7157
+done n1_H1@C 0.7149
+done n1_H3@C 0.7155
+done n1_H2cal@C 0.7128
+done n1_ref_plus2000@C 0.7171
+done n1_ref_lr1e-4@C 0.7399
+done n1_original@B 0.7005
+done n1_H2cal@B 0.7026
+done n1_H1_nocomp@B 0.7048
+done n1_H1_nocomp@C 0.7156
+done n1_H2_nocomp@B 0.7015
+done n1_H2_nocomp@C 0.7118
+seed 1: H2 selected feature 26 ; H1 selected offsets [-37, -36, -35, -34, -33, -32, -31, -30, -29, -28, 30, 31, 32, 33, 34, 35, 36, 37]
+done s1_original@B 0.7
+done s1_original@C 0.7097
+done s1_H1@B 0.7047
+done s1_H1@C 0.7138
+done s1_H2@B 0.7007
+done s1_H2@C 0.7103
+done s1_H3@B 0.7051
+done s1_H3@C 0.7144
+done s1_H2cal@B 0.7021
+done s1_H2cal@C 0.7116
+seed 2: H2 selected feature 26 ; H1 selected offsets [-38, -37, -36, -35, -34, -33, -32, -31, -28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+done s2_original@B 0.7004
+done s2_original@C 0.7101
+done s2_H1@B 0.7049
+done s2_H1@C 0.7147
+done s2_H2@B 0.7012
+done s2_H2@C 0.7108
+done s2_H3@B 0.7056
+done s2_H3@C 0.7151
+done s2_H2cal@B 0.7021
+done s2_H2cal@C 0.7119
+done n1_ref_fresh_lr1e-3@B 0.7035
+done n1_ref_fresh_lr1e-3@C 0.7136
+ALLDONE
+done n1_ref_samestate_lr1e-4@B 0.7287
+done n1_ref_samestate_lr1e-4@C 0.7396

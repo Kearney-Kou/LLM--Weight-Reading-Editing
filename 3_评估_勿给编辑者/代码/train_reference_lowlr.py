@@ -1,6 +1,6 @@
-"""运行方式：在 3_评估_勿给编辑者 根目录下执行 python3 代码/train_reference_lowlr.py
-额外参照：从被试网络出发，换成学习率 1e-4（新的 AdamW 状态），继续训练 2000 步，保存 reference_lr1e-4_plus2000steps.npz。
-目的：估计这个网络的"潜力"有多大（恒定 lr 1e-3 时权重在底部来回抖，降学习率能很快拿到一部分潜力）。"""
+"""How to run: from the 3_评估_勿给编辑者 root, run python3 代码/train_reference_lowlr.py
+Extra reference: starting from the subject network, switch to learning rate 1e-4 (new AdamW state), continue training 2000 steps, save reference_lr1e-4_plus2000steps.npz.
+Purpose: estimate how much "potential" this network has (at constant lr 1e-3 the weights bounce back and forth at the bottom; lowering the learning rate quickly captures part of the potential)."""
 import numpy as np, torch, sys
 from wlib import Frames, accuracy
 from train_subject_lib import TrainFrames

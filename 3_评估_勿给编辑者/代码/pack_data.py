@@ -1,5 +1,5 @@
-# 从 HW1P2 数据（只读）打包实验用数据：train 随机 3000 句 + 全部 dev
-# 每句做倒谱归一化（按列标准化），特征存 float16，标签存 uint8（去掉 [SOS]/[EOS]）
+# Pack the experiment data from the raw features (read-only): 3000 random training utterances + all development utterances
+# Cepstral normalization per utterance (standardize by column); features stored as float16, labels as uint8 ([SOS]/[EOS] removed)
 import os, sys, numpy as np
 ROOT = sys.argv[1]
 PHONEMES = ['[SIL]','AA','AE','AH','AO','AW','AY','B','CH','D','DH','EH','ER','EY','F','G','HH','IH','IY','JH','K','L','M','N','NG','OW','OY','P','R','S','SH','T','TH','UH','UW','V','W','Y','Z','ZH','[SOS]','[EOS]']

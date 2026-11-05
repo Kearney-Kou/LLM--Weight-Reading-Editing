@@ -1,6 +1,6 @@
-"""第五版补充分析 1（post hoc，设置、预测和判断规则见 结果/预测_第五版补充分析.md）：远端权重位移的径向/切向分解。
-在 3_评估_勿给编辑者 根目录下运行：python3 代码/displacement.py  → 结果/displacement_out.txt、结果/displacement.json
-只读权重，不需要数据。"""
+"""Supplementary analysis (post hoc; settings, predictions and decision rules in 结果/预测_第五版补充分析.md): radial/tangential decomposition of the displacement of the far weights.
+Run from the 3_评估_勿给编辑者 root: python3 代码/displacement.py  → 结果/displacement_out.txt, 结果/displacement.json
+Reads weights only; no data needed."""
 import numpy as np, json
 dt = np.arange(-40, 41)
 FAR = (np.abs(dt) >= 30) & (np.abs(dt) <= 38); NEAR = np.abs(dt) <= 10

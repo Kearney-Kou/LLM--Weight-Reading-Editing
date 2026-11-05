@@ -1,0 +1,10 @@
+English translation of `ref_lowlr_long_log.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+step 2000  full dev A acc 0.7269  209s
+  max absolute difference from reference_lr1e-4_plus2000steps.npz: {'W1': 0.0, 'W2': 0.0, 'W3': 0.0, 'b1': 0.0, 'b2': 0.0, 'b3': 0.0}
+step 4000  full dev A acc 0.7317  420s
+step 6000  full dev A acc 0.7335  617s
+step 8000  full dev A acc 0.7345  809s
+step 10000  full dev A acc 0.7346  997s

@@ -24,5 +24,5 @@ for nm in ['B','C']: J[f'n1_original@{nm}'] = dict(acc=r[f'n1_original@{nm}'].su
 for s_ in ['s1','s2']:
     for nm in ['B','C']: J[f'{s_}_original@{nm}'] = dict(acc=r[f'{s_}_original@{nm}'].sum()/info[nm][0].sum()*100)
 if 'n1_H1@C' in r.files and 'n1_ed2A_E12@C' in r.files: print('C: H1 − ed2A_E12 →', row('n1_H1@C', 'n1_ed2A_E12@C', store='H1_minus_E12@C').split('Δ')[1])
-# JSON 键 H1_minus_E12@C：C 上 H1 − ed2A_E12 的差
+# JSON key H1_minus_E12@C: the difference H1 − ed2A_E12 on C
 json.dump(J, open('结果/confirm_summary.json', 'w'), indent=1)

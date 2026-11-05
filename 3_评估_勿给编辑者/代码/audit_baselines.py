@@ -1,11 +1,11 @@
-"""运行方式：在 3_评估_勿给编辑者 根目录下执行 python3 代码/audit_baselines.py
-审查补充实验（B 上相对原网络的变化）：
-(i)   2A 的修改 1+2 精确版：取 2A 交上来的网络，把 W3、b3 恢复成原样（撤销修改 3–5）。
-(ii)  量级剪枝基线：把 W1 里绝对值最小的 516,096 个权重置 0（与 2A 改动个数相同）+ b2 均值补偿。不需要 LLM。
-(iii) 行范数基线：把"平均行范数最小"的 18 个时间偏移置 0 + 补偿。不需要 LLM，也不用标签。
-(iv)  最小 η² 基线：在 A 上算每个特征维（中心帧）的类别区分度 η²，去掉 η² 最小的那一维 + 补偿。
-(v)   探索：2A 修改 1+2 精确版 再叠加 去掉 f26 + 补偿。
-补偿统一用 A 上随机 40000 帧的无标签 h1 均值（与 targeted_controls / null_tests 一致）。"""
+"""How to run: from the 3_评估_勿给编辑者 root, run python3 代码/audit_baselines.py
+Additional baselines (change relative to the original network on B):
+(i)   Exact version of 2A's edits 1+2: take the network 2A submitted and restore W3, b3 to the original (undo edits 3–5).
+(ii)  Magnitude-pruning baseline: set the 516,096 smallest-magnitude weights in W1 to 0 (same number as 2A changed) + b2 mean compensation. No LLM needed.
+(iii) Row-norm baseline: set the 18 time offsets with the "smallest mean row norm" to 0 + compensation. No LLM needed, and no labels used.
+(iv)  Minimum-η² baseline: on A, compute the class separability η² of each feature dimension (centre frame), remove the one dimension with the smallest η² + compensation.
+(v)   Exploration: exact version of 2A's edits 1+2, plus removing f26 + compensation.
+Compensation always uses the unlabelled h1 mean over 40000 random frames of A (consistent with targeted_controls / null_tests)."""
 import numpy as np, torch
 from wlib import Frames, predict, NAMES
 torch.set_num_threads(2)

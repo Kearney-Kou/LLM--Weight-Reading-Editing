@@ -1,14 +1,14 @@
-"""第三版补充实验 B2（post hoc，设置、预测和判断规则见 结果/预测_第三版补充实验.md）：噪声假说的检验。
-把冻结的 H1（heur.py，带补偿 / 不带补偿）用在继续训练过的网络上，在 B 和 C 上评估，差值相对"被编辑的那个网络本身"。
-打分、每句正确帧数的存法与 confirm_eval.py 相同；bootstrap 与 summarize_confirm.py 相同（rng 种子 0，2000 次，按句子 / 按说话人）。
-在 3_评估_勿给编辑者 根目录下运行：
-    python3 代码/noise_test.py eval        # 计算每句正确帧数 → 结果/noise_counts.npz（可断点续算）
-    python3 代码/noise_test.py summary     # bootstrap、行范数剖面 → 结果/noise_test_out.txt、结果/noise_summary.json"""
+"""Supplementary experiment (post hoc; settings, predictions and decision rules in 结果/预测_第三版补充实验.md): test of the noise hypothesis.
+Apply the frozen H1 (heur.py, with / without compensation) to networks that were trained further, evaluate on B and C; differences are relative to "the network being edited itself".
+Scoring and the storage of correct frames per utterance are the same as confirm_eval.py; the bootstrap is the same as summarize_confirm.py (rng seed 0, 2000 times, by utterance / by speaker).
+Run from the 3_评估_勿给编辑者 root:
+    python3 代码/noise_test.py eval        # compute correct frames per utterance → 结果/noise_counts.npz (can resume after interruption)
+    python3 代码/noise_test.py summary     # bootstrap, row-norm profiles → 结果/noise_test_out.txt, 结果/noise_summary.json"""
 import numpy as np, torch, sys, os, json
 torch.set_num_threads(2)
 E = '网络/'
 L = lambda p: {k: v.astype(np.float32) for k, v in np.load(p).items()}
-NETS = {'n1': 'subject_net.npz',                                   # 一致性检查：应复现已报告的数字
+NETS = {'n1': 'subject_net.npz',                                   # consistency check: should reproduce the reported numbers
         'ss_lr1e-4': 'reference_samestate_lr1e-4_plus2000steps.npz',
         'fresh_lr1e-4': 'reference_lr1e-4_plus2000steps.npz',
         'cont2000': 'reference_plus2000steps.npz',
@@ -42,7 +42,7 @@ if sys.argv[1] == 'summary':
     info = {'B': (Bd['lens'].astype(float), np.array([n.split('-')[0] for n in Bd['names']])),
             'C': (Cd['lens'].astype(float), np.array([n.split('-')[0] for n in Cd['names']]))}
     rng = np.random.default_rng(0); boots = {}
-    for k, (Ln, spk) in info.items():          # 与 summarize_confirm.py 相同的抽样顺序
+    for k, (Ln, spk) in info.items():          # same sampling order as summarize_confirm.py
         U = len(Ln); us = np.unique(spk); ix = {s: np.where(spk == s)[0] for s in us}
         boots[k] = ([rng.integers(0, U, U) for _ in range(2000)], [np.concatenate([ix[s] for s in rng.choice(us, len(us))]) for _ in range(2000)])
     J = {}; lines = []
@@ -53,7 +53,7 @@ if sys.argv[1] == 'summary':
         for v, rk in [('H1nocomp', 'n1_H1_nocomp')]:
             if f'{rk}@{nm}' in ref.files: P(f'  n1 {v} @{nm} 与 {rk}@{nm} 逐句一致：', bool(np.array_equal(r[f'n1_{v}@{nm}'], ref[f'{rk}@{nm}'])))
     if 'n1_H1@C' in ref.files: P('  n1 H1 @C 与 n1_H1@C 逐句一致：', bool(np.array_equal(r['n1_H1@C'], ref['n1_H1@C'])))
-    old = np.load('结果/per_utt_correct.npz')       # 第一轮 B 上的结果
+    old = np.load('结果/per_utt_correct.npz')       # earlier results on B
     for mine, theirs, src in [('n1_H1@B', 'base_rownorm18', old), ('cont2000_orig@B', 'ref_plus2000', old), ('cont4000_orig@B', 'ref_plus4000', old),
                               ('fresh_lr1e-4_orig@B', 'ref_lr1e-4_plus2000', old), ('cont2000_orig@C', 'n1_ref_plus2000@C', ref),
                               ('fresh_lr1e-4_orig@C', 'n1_ref_lr1e-4@C', ref), ('ss_lr1e-4_orig@B', 'n1_ref_samestate_lr1e-4@B', ref),

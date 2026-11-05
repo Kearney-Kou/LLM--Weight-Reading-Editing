@@ -1,0 +1,15 @@
+English translation of `null_b.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+original network B 0.7005
+(b)  0 random 22.2% positions: -0.0922
+(b)  1 random 22.2% positions: -0.0858
+(b)  2 random 22.2% positions: -0.0934
+(b)  3 random 22.2% positions: -0.0956
+(b)  4 random 22.2% positions: -0.0983
+(b)  5 random 22.2% positions: -0.0944
+(b)  6 random 22.2% positions: -0.0918
+(b)  7 random 22.2% positions: -0.0892
+(b)  8 random 22.2% positions: -0.0917
+(b)  9 random 22.2% positions: -0.0909

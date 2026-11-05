@@ -1,4 +1,4 @@
-"""预注册里冻结的规则（H1、H2、H3、H2+cal），以及机制分离用的"只删不补偿"版本。"""
+"""The rules frozen in the pre-registration (H1, H2, H3, H2+cal), and the "delete only, no compensation" versions used for mechanism separation."""
 import numpy as np, torch
 from wlib import Frames
 A = Frames('数据/dev_A.npz')

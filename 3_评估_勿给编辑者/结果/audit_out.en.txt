@@ -1,0 +1,13 @@
+English translation of `audit_out.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+original network B 0.7005
+(i)   2A edits 1+2, exact version: +0.0041
+      number pruned 516096
+(ii)  magnitude pruning 22.2%: +0.0004
+      the 18 offsets with the smallest row norm dt = [-37, -36, -35, -34, -33, -32, -31, -30, -29, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+(iii) smallest row norm, 18 offsets: +0.0040
+      dimension with the smallest η² 26  (η²=0.00004), next smallest [25, 23, 24]
+(iv)  remove the dimension with the smallest η², f=26: +0.0009
+(v)   2A edits 1+2 + remove f26: +0.0048

@@ -1,5 +1,5 @@
-"""额外参照（机制分离）：从被试网络出发，重置 AdamW 状态、学习率保持 1e-3，训练 2000 步。与"重置状态 + lr 1e-4"对比，分离"降学习率"和"重置优化器状态"两个因素。
-目的：估计这个网络的"潜力"有多大（恒定 lr 1e-3 时权重在底部来回抖，降学习率能很快拿到一部分潜力）。"""
+"""Extra reference (mechanism separation): starting from the subject network, reset the AdamW state, keep the learning rate at 1e-3, train 2000 steps. Compared with "reset state + lr 1e-4", this separates the two factors "lower learning rate" and "reset optimizer state".
+Purpose: estimate how much "potential" this network has (at constant lr 1e-3 the weights bounce back and forth at the bottom; lowering the learning rate quickly captures part of the potential)."""
 import numpy as np, torch, sys
 from wlib import Frames, accuracy
 from train_subject_lib import TrainFrames

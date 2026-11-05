@@ -1,0 +1,24 @@
+English translation of `displacement_out.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+Per-weight quantities: w_rms = RMS of the subject's weights; d_rms = RMS displacement; radial = radial component (negative = towards 0); tangential = tangential component; wd = radial displacement explained by weight decay; η√T = expected displacement of a pure random walk
+lr1e-4 fresh, +2000        far   w_rms 0.0400  d_rms 0.0056  radial -0.0015  tangential 0.0054  wd -0.00008  radial/wd  18.9  |radial|/tangential 0.28  η√T 0.0045  norm change -2.8%  rows towards 0 100%
+lr1e-4 fresh, +2000        near  w_rms 0.1171  d_rms 0.0055  radial +0.0001  tangential 0.0055  wd -0.00023  radial/wd  -0.4  |radial|/tangential 0.02  η√T 0.0045  norm change +0.2%  rows towards 0 67%
+lr1e-4 fresh, +4000        far   w_rms 0.0400  d_rms 0.0081  radial -0.0025  tangential 0.0077  wd -0.00016  radial/wd  15.9  |radial|/tangential 0.33  η√T 0.0063  norm change -4.4%  rows towards 0 100%
+lr1e-4 fresh, +4000        near  w_rms 0.1171  d_rms 0.0081  radial +0.0000  tangential 0.0081  wd -0.00047  radial/wd  -0.1  |radial|/tangential 0.01  η√T 0.0063  norm change +0.3%  rows towards 0 69%
+lr1e-4 fresh, +6000        far   w_rms 0.0400  d_rms 0.0099  radial -0.0033  tangential 0.0093  wd -0.00024  radial/wd  13.7  |radial|/tangential 0.35  η√T 0.0077  norm change -5.2%  rows towards 0 100%
+lr1e-4 fresh, +6000        near  w_rms 0.1171  d_rms 0.0101  radial -0.0000  tangential 0.0101  wd -0.00070  radial/wd   0.0  |radial|/tangential 0.00  η√T 0.0077  norm change +0.4%  rows towards 0 71%
+lr1e-4 fresh, +8000        far   w_rms 0.0400  d_rms 0.0112  radial -0.0036  tangential 0.0106  wd -0.00032  radial/wd  11.2  |radial|/tangential 0.34  η√T 0.0089  norm change -5.2%  rows towards 0 100%
+lr1e-4 fresh, +8000        near  w_rms 0.1171  d_rms 0.0116  radial -0.0001  tangential 0.0116  wd -0.00093  radial/wd   0.1  |radial|/tangential 0.01  η√T 0.0089  norm change +0.4%  rows towards 0 74%
+lr1e-4 fresh, +10000       far   w_rms 0.0400  d_rms 0.0111  radial -0.0033  tangential 0.0106  wd -0.00040  radial/wd   8.4  |radial|/tangential 0.31  η√T 0.0100  norm change -4.5%  rows towards 0 100%
+lr1e-4 fresh, +10000       near  w_rms 0.1171  d_rms 0.0120  radial -0.0001  tangential 0.0120  wd -0.00116  radial/wd   0.1  |radial|/tangential 0.01  η√T 0.0100  norm change +0.4%  rows towards 0 76%
+lr1e-4 same state, +2000   far   w_rms 0.0400  d_rms 0.0055  radial -0.0015  tangential 0.0053  wd -0.00008  radial/wd  18.9  |radial|/tangential 0.29  η√T 0.0045  norm change -2.9%  rows towards 0 100%
+lr1e-4 same state, +2000   near  w_rms 0.1171  d_rms 0.0054  radial +0.0001  tangential 0.0054  wd -0.00023  radial/wd  -0.6  |radial|/tangential 0.03  η√T 0.0045  norm change +0.2%  rows towards 0 68%
+lr1e-3 same state, +2000   far   w_rms 0.0400  d_rms 0.0301  radial -0.0089  tangential 0.0287  wd -0.00079  radial/wd  11.3  |radial|/tangential 0.31  η√T 0.0447  norm change +5.8%  rows towards 0 100%
+lr1e-3 same state, +2000   near  w_rms 0.1171  d_rms 0.0309  radial +0.0055  tangential 0.0304  wd -0.00232  radial/wd  -2.4  |radial|/tangential 0.18  η√T 0.0447  norm change +7.9%  rows towards 0 50%
+lr1e-3 same state, +4000   far   w_rms 0.0400  d_rms 0.0372  radial -0.0127  tangential 0.0350  wd -0.00157  radial/wd   8.1  |radial|/tangential 0.36  η√T 0.0632  norm change +11.0%  rows towards 0 100%
+lr1e-3 same state, +4000   near  w_rms 0.1171  d_rms 0.0417  radial +0.0109  tangential 0.0402  wd -0.00459  radial/wd  -2.4  |radial|/tangential 0.27  η√T 0.0632  norm change +14.6%  rows towards 0 45%
+
+Ratio of far RMS displacement (step 10000 / step 2000): 2.00 (random walk √5 = 2.24, constant drift 5); near the centre: 2.17
+According to the decision rules written in advance: there is a weak pull towards 0, but it is dominated by random motion ;  the displacement grows as √T, consistent with a random walk

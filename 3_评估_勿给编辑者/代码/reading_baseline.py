@@ -1,12 +1,12 @@
-"""读权重的非 LLM 基线：只用打乱后的 W1（net_q7），用固定算法恢复 81×28 布局，和真实打乱顺序比对。
-算法 R1（与 1B 描述的流程相同，但完全固定、不经 LLM）：行余弦相似度 → 互为前 2 近邻建图 → 连通分量；长度恰为 81 的路径分量按路径顺序输出。
-算法 R2（不依赖图结构的聚类）：对相似度做层次聚类（平均链接）分成 28 组，组内按谱排序（Fiedler 向量）排顺序。
-评分：一条恢复出的通道"正确" = 81 行都来自同一个原特征，且顺序与真实时间单调一致（正向或反向）。"""
+"""Non-LLM baseline for reading the weights: using only the permuted W1 (net_q7), recover the 81×28 layout with a fixed algorithm and compare it with the true permutation.
+Algorithm R1 (the same procedure as described by 1B, but completely fixed, without an LLM): row cosine similarity → graph of mutual top-2 nearest neighbours → connected components; path components of length exactly 81 are output in path order.
+Algorithm R2 (clustering that does not rely on graph structure): hierarchical clustering (average linkage) of the similarities into 28 groups, ordered within each group by spectral ordering (Fiedler vector).
+Scoring: a recovered channel is "correct" = all 81 rows come from the same original feature, and the order is monotone with the true time (forward or backward)."""
 import numpy as np, time
 from scipy.cluster.hierarchy import linkage, fcluster
 from scipy.sparse.csgraph import connected_components
 t0 = time.time()
-perm = np.random.default_rng(777).permutation(2268)          # q7 第 i 行 = 原输入 perm[i]
+perm = np.random.default_rng(777).permutation(2268)          # row i of q7 = original input perm[i]
 W = np.load('../1_阶段1_读权重/net_q7.npz')['W1']
 Wn = W / np.linalg.norm(W, axis=1, keepdims=True); S = Wn @ Wn.T; np.fill_diagonal(S, -1)
 def score(chains):

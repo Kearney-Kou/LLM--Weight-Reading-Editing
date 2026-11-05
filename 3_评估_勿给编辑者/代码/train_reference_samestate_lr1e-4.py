@@ -1,7 +1,7 @@
-"""补齐 2×2 对照（事后补做，未预注册）：保留原 AdamW 状态、把学习率降到 1e-4，再训练 2000 步。
-做法：用与 train_subject.py 完全相同的种子和流程重新训练到第 9400 步，先核对权重与 subject_net.npz 一致，
-然后在同一个优化器上把 lr 改成 1e-4，沿原来的数据顺序继续 2000 步。
-用法：python3 train_reference_samestate_lr1e-4.py <chunk0> <chunk1> <chunk2>"""
+"""Completing the 2×2 control (done afterwards, not pre-registered): keep the original AdamW state, lower the learning rate to 1e-4, and train 2000 more steps.
+Method: retrain to step 9400 with exactly the same seed and procedure as train_subject.py, first check that the weights match subject_net.npz,
+then change lr to 1e-4 on the same optimizer and continue 2000 steps along the original data order.
+Usage: python3 train_reference_samestate_lr1e-4.py <chunk0> <chunk1> <chunk2>"""
 import numpy as np, torch, time, sys, copy
 from wlib import Frames, accuracy
 from train_subject_lib import TrainFrames

@@ -1,8 +1,8 @@
-"""第四版补充实验（post hoc，设置和预测见 结果/预测_第四版补充实验.md）：H1 在 lr 1e-4 训练更久的各检查点上的收益。
-评估方法与 noise_test.py 完全相同（逐句正确帧数；按句子 / 按说话人 bootstrap 2000 次，rng 种子 0）。
-在 3_评估_勿给编辑者 根目录下运行：
-    python3 代码/noise_long.py eval      # → 结果/noise_long_counts.npz（可断点续算）
-    python3 代码/noise_long.py summary   # → 结果/noise_long_out.txt、结果/noise_long_summary.json"""
+"""Supplementary experiment (post hoc; settings and predictions in 结果/预测_第四版补充实验.md): gain of H1 at each checkpoint of longer training at lr 1e-4.
+Evaluation method exactly the same as noise_test.py (correct frames per utterance; bootstrap by utterance / by speaker, 2000 times, rng seed 0).
+Run from the 3_评估_勿给编辑者 root:
+    python3 代码/noise_long.py eval      # → 结果/noise_long_counts.npz (can resume after interruption)
+    python3 代码/noise_long.py summary   # → 结果/noise_long_out.txt, 结果/noise_long_summary.json"""
 import numpy as np, torch, sys, os, json
 torch.set_num_threads(2)
 L = lambda p: {k: v.astype(np.float32) for k, v in np.load(p).items()}
@@ -32,7 +32,7 @@ if sys.argv[1] == 'summary':
     info = {'B': (Bd['lens'].astype(float), np.array([n.split('-')[0] for n in Bd['names']])),
             'C': (Cd['lens'].astype(float), np.array([n.split('-')[0] for n in Cd['names']]))}
     rng = np.random.default_rng(0); boots = {}
-    for k, (Ln, spk) in info.items():          # 与 summarize_confirm.py / noise_test.py 相同的抽样顺序
+    for k, (Ln, spk) in info.items():          # same sampling order as summarize_confirm.py / noise_test.py
         U = len(Ln); us = np.unique(spk); ix = {s: np.where(spk == s)[0] for s in us}
         boots[k] = ([rng.integers(0, U, U) for _ in range(2000)], [np.concatenate([ix[s] for s in rng.choice(us, len(us))]) for _ in range(2000)])
     lines = []; P = lambda *a: (lines.append(' '.join(str(x) for x in a)), print(*a))

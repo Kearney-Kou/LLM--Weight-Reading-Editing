@@ -1,10 +1,10 @@
-"""评估（只在编辑者交卷后运行一次）。用法：
-    python3 代码/evaluate.py <修改后的网络.npz> [更多 .npz ...]   （在 3_评估_勿给编辑者 根目录下运行）
-在考试集 B 上比较：原网络、修改后的网络、继续训练 500/1000/2000/4000 步的参照、降学习率训练 2000 步的参照、随机修改对照（每个提交 20 份）。
-差值按"句子"做 bootstrap（2000 次）给 95% 置信区间（同一句话里的帧高度相关，不能当独立样本）。
-报告写到 评估报告_<文件名>.md。"""
+"""Evaluation (run only once, after the editor has submitted). Usage:
+    python3 代码/evaluate.py <edited network.npz> [more .npz ...]   (run from the 3_评估_勿给编辑者 root)
+Compares on test set B: the original network, the edited network, references trained 500/1000/2000/4000 further steps, the reference trained 2000 steps at a lower learning rate, and random-edit controls (20 per submission).
+Differences are bootstrapped by "utterance" (2000 times) for 95% confidence intervals (frames within one utterance are highly correlated and cannot be treated as independent samples).
+The report is written to 评估报告_<file name>.md."""
 import os, sys, numpy as np, torch
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # 3_评估_勿给编辑者 根目录
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # 3_评估_勿给编辑者 root
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from wlib import Frames, predict, NAMES
 
@@ -22,7 +22,7 @@ def boot_ci(c_new, c_old, lens, n=2000, seed=0):
     return np.percentile(ds, [2.5, 97.5])
 
 def random_like(w0, w1, rng):
-    """同样的每个张量改动个数、同样的改动范数，位置和方向随机。"""
+    """Same number of changed entries per tensor, same norm of the change; random positions and directions."""
     out = {}
     for k in NAMES:
         d = w1[k] - w0[k]; nz = np.flatnonzero(d); r = w0[k].copy()

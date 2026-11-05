@@ -1,0 +1,50 @@
+English translation of `noise_test_out.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+Consistency check (subject network; should be identical per utterance to confirm_counts.npz):
+  n1 original network @B vs confirm_counts' n1_original@B identical per utterance: True
+  n1 H1nocomp @B vs n1_H1_nocomp@B identical per utterance: True
+  n1 original network @C vs confirm_counts' n1_original@C identical per utterance: True
+  n1 H1nocomp @C vs n1_H1_nocomp@C identical per utterance: True
+  n1 H1 @C vs n1_H1@C identical per utterance: True
+  n1_H1@B vs stored base_rownorm18 identical per utterance: True
+  cont2000_orig@B vs stored ref_plus2000 identical per utterance: True
+  cont4000_orig@B vs stored ref_plus4000 identical per utterance: True
+  fresh_lr1e-4_orig@B vs stored ref_lr1e-4_plus2000 identical per utterance: True
+  cont2000_orig@C vs stored n1_ref_plus2000@C identical per utterance: True
+  fresh_lr1e-4_orig@C vs stored n1_ref_lr1e-4@C identical per utterance: True
+  ss_lr1e-4_orig@B vs stored n1_ref_samestate_lr1e-4@B identical per utterance: True
+  ss_lr1e-4_orig@C vs stored n1_ref_samestate_lr1e-4@C identical per utterance: True
+
+n1            far floor |Δt|30..38 mean 1.2718  |Δt|≥26 median 1.2861  peak 4.337  H1 selected [-37, -36, -35, -34, -33, -32, -31, -30, -29, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+    B: original network  70.05  H1        Δ +0.40  utt-CI [+0.34, +0.46]  spk-CI [+0.33, +0.46]
+    B: original network  70.05  H1nocomp  Δ +0.44  utt-CI [+0.38, +0.50]  spk-CI [+0.37, +0.50]
+    C: original network  71.10  H1        Δ +0.39  utt-CI [+0.34, +0.43]  spk-CI [+0.34, +0.43]
+    C: original network  71.10  H1nocomp  Δ +0.46  utt-CI [+0.41, +0.50]  spk-CI [+0.41, +0.50]
+ss_lr1e-4     far floor |Δt|30..38 mean 1.2347  |Δt|≥26 median 1.2496  peak 4.339  H1 selected [-37, -36, -35, -34, -33, -32, -31, -30, -29, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+    B: original network  72.87  H1        Δ +0.21  utt-CI [+0.15, +0.26]  spk-CI [+0.14, +0.27]
+    B: original network  72.87  H1nocomp  Δ +0.16  utt-CI [+0.11, +0.22]  spk-CI [+0.10, +0.23]
+    C: original network  73.96  H1        Δ +0.20  utt-CI [+0.16, +0.24]  spk-CI [+0.16, +0.24]
+    C: original network  73.96  H1nocomp  Δ +0.17  utt-CI [+0.13, +0.21]  spk-CI [+0.13, +0.22]
+fresh_lr1e-4  far floor |Δt|30..38 mean 1.2350  |Δt|≥26 median 1.2499  peak 4.339  H1 selected [-37, -36, -35, -34, -33, -32, -31, -30, -29, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+    B: original network  72.90  H1        Δ +0.21  utt-CI [+0.16, +0.27]  spk-CI [+0.16, +0.27]
+    B: original network  72.90  H1nocomp  Δ +0.18  utt-CI [+0.13, +0.24]  spk-CI [+0.14, +0.23]
+    C: original network  73.99  H1        Δ +0.18  utt-CI [+0.14, +0.22]  spk-CI [+0.14, +0.22]
+    C: original network  73.99  H1nocomp  Δ +0.13  utt-CI [+0.09, +0.17]  spk-CI [+0.09, +0.17]
+cont2000      far floor |Δt|30..38 mean 1.3458  |Δt|≥26 median 1.3590  peak 4.660  H1 selected [-37, -36, -35, -34, -33, -32, -31, -30, -29, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+    B: original network  70.57  H1        Δ +0.41  utt-CI [+0.35, +0.46]  spk-CI [+0.36, +0.46]
+    B: original network  70.57  H1nocomp  Δ +0.50  utt-CI [+0.44, +0.56]  spk-CI [+0.44, +0.56]
+    C: original network  71.71  H1        Δ +0.39  utt-CI [+0.35, +0.43]  spk-CI [+0.35, +0.44]
+    C: original network  71.71  H1nocomp  Δ +0.47  utt-CI [+0.43, +0.51]  spk-CI [+0.42, +0.52]
+cont4000      far floor |Δt|30..38 mean 1.4120  |Δt|≥26 median 1.4261  peak 4.939  H1 selected [-37, -36, -35, -34, -33, -32, -31, -30, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38]
+    B: original network  70.68  H1        Δ +0.42  utt-CI [+0.37, +0.48]  spk-CI [+0.36, +0.49]
+    B: original network  70.68  H1nocomp  Δ +0.48  utt-CI [+0.42, +0.54]  spk-CI [+0.41, +0.54]
+    C: original network  71.80  H1        Δ +0.38  utt-CI [+0.34, +0.42]  spk-CI [+0.34, +0.43]
+    C: original network  71.80  H1nocomp  Δ +0.44  utt-CI [+0.40, +0.49]  spk-CI [+0.40, +0.49]
+
+According to the decision rules written in advance (g ≤ 0.5·g0 counts as "clearly smaller"):
+  ss_lr1e-4     g/g0: H1@B 0.53, H1@C 0.52, H1nocomp@B 0.38, H1nocomp@C 0.38; far floor relative to subject -2.9%
+  fresh_lr1e-4  g/g0: H1@B 0.54, H1@C 0.47, H1nocomp@B 0.42, H1nocomp@C 0.29; far floor relative to subject -2.9%
+  cont2000      g/g0: H1@B 1.03, H1@C 1.02, H1nocomp@B 1.15, H1nocomp@C 1.03; far floor relative to subject +5.8%
+  cont4000      g/g0: H1@B 1.06, H1@C 0.99, H1nocomp@B 1.10, H1nocomp@C 0.98; far floor relative to subject +11.0%

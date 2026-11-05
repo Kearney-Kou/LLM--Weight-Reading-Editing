@@ -1,8 +1,8 @@
-"""(1) 第 26 维信息量的更多检验（在 A 上）：
-    η² = Σ_c n_c (μ_c − μ)² / Σ_i (x_i − μ)²（中心帧，按类别均值的方差解释比例）；
-    互信息 I(分箱特征; 标签)：32 个等频箱，用"打乱标签"重复 20 次估计偏差（零基线）；
-    同时对 x² 分箱（捕捉方差差异）；时间滞后 1..5 的自相关；与其他 27 维在 −3..+3 帧滞后上的最大绝对相关。
-(2) B 上主表的按说话人 bootstrap（整位说话人一起重抽，2000 次）。"""
+"""(1) More tests of how informative dimension 26 is (on A):
+    η² = Σ_c n_c (μ_c − μ)² / Σ_i (x_i − μ)² (centre frame; proportion of variance explained by the class means);
+    mutual information I(binned feature; label): 32 equal-frequency bins, bias estimated by repeating "shuffled labels" 20 times (null baseline);
+    also binning x² (to capture differences in variance); autocorrelation at time lags 1..5; maximum absolute correlation with the other 27 dimensions at lags of −3..+3 frames.
+(2) Speaker bootstrap of the main table on B (whole speakers resampled together, 2000 times)."""
 import numpy as np
 d = np.load('数据/dev_A.npz'); x = d['x'].astype(np.float32); y = d['y'].astype(int); L = d['lens']
 def mi(v, y, bins=32):
@@ -17,7 +17,7 @@ for f in [26, 25, 23, 24, 22, 0, 27]:
     null = [mi(v, rng.permutation(y)) for _ in range(20)]
     print(f'{f:4d}  {eta:.5f}  {mi(v, y):.5f}     {np.percentile(null, 95):.5f}     {mi(v * v, y):.5f}')
 s = np.concatenate([[0], np.cumsum(L)])
-def lagcorr(a, b, k):   # 句内，a[t] 与 b[t+k]
+def lagcorr(a, b, k):   # within an utterance, a[t] vs b[t+k]
     num = den1 = den2 = 0.0
     for u in range(len(L)):
         A = a[s[u]:s[u+1]]; B = b[s[u]:s[u+1]]
@@ -28,7 +28,7 @@ def lagcorr(a, b, k):   # 句内，a[t] 与 b[t+k]
 print('f26 自相关 lag1..5:', [round(lagcorr(x[:, 26], x[:, 26], k), 4) for k in range(1, 6)])
 mx = max(abs(lagcorr(x[:, 26], x[:, g], k)) for g in range(28) if g != 26 for k in range(-3, 4))
 print('f26 与其他维在 −3..+3 帧滞后上的最大 |相关|:', round(float(mx), 4))
-# (2) 说话人 bootstrap
+# (2) speaker bootstrap
 B = np.load('数据/dev_B.npz'); spk = np.array([n.split('-')[0] for n in B['names']])
 C = np.load('结果/per_utt_correct.npz'); lens = C['lens']
 us = np.unique(spk); idx = {sp: np.where(spk == sp)[0] for sp in us}

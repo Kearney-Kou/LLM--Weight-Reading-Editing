@@ -1,11 +1,11 @@
-"""新种子被试网络：与 train_subject.py 完全相同（数据、结构、优化器、监测子集、停止规则），只改随机种子；只保存被试网络。
-用法：python3 train_seed.py <seed> <train chunk0> <chunk1> <chunk2>"""
+"""New-seed subject networks: exactly the same as train_subject.py (data, architecture, optimizer, monitoring subset, stopping rule), only the random seed changes; only the subject network is saved.
+Usage: python3 train_seed.py <seed> <train chunk0> <chunk1> <chunk2>"""
 import numpy as np, torch, time, sys
 from wlib import Frames, accuracy
 from train_subject_lib import TrainFrames
 s = int(sys.argv[1]); torch.manual_seed(s); np.random.seed(s); torch.set_num_threads(2)
 tr = TrainFrames(sys.argv[2:]); dA = Frames('数据/dev_A.npz')
-mon = torch.from_numpy(np.random.default_rng(1).choice(len(dA), 100000, replace=False))   # 与原网络相同的监测子集
+mon = torch.from_numpy(np.random.default_rng(1).choice(len(dA), 100000, replace=False))   # same monitoring subset as the original network
 net = torch.nn.Sequential(torch.nn.Linear(2268, 1024), torch.nn.ReLU(), torch.nn.Linear(1024, 1024), torch.nn.ReLU(), torch.nn.Linear(1024, 42))
 opt = torch.optim.AdamW(net.parameters(), lr=1e-3, weight_decay=0.01); lossf = torch.nn.CrossEntropyLoss()
 def export():

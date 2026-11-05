@@ -1,10 +1,10 @@
-"""第五版补充分析 2（post hoc，设置、预测和判断规则见 结果/预测_第五版补充分析.md）：H1 在训练数据上的效果。
-在 3_评估_勿给编辑者 根目录下运行：
-    python3 代码/train_set_h1.py check <chunk0> <chunk1> <chunk2>   # 用重建的顺序重跑被试训练前 200 步，核对 train_log.txt（loss 1.518，monA 0.5399）
-    python3 代码/train_set_h1.py eval  <chunk0> <chunk1> <chunk2>   # → 结果/train_set_h1_counts.npz（可断点续算）
-    python3 代码/train_set_h1.py summary <chunk0> <chunk1> <chunk2> # → 结果/train_set_h1_out.txt、train_set_h1.json
-训练顺序：被试（train_subject.py）和 lr 1e-4 长训练（train_reference_lowlr_long.py）都是 torch.manual_seed(0) → 建网络 → randperm，所以顺序相同。
-被试看过 perm[:9,625,600]（各一次）；第 10,000 步检查点在此之后又看了 perm[:10,240,000]。"""
+"""Supplementary analysis (post hoc; settings, predictions and decision rules in 结果/预测_第五版补充分析.md): effect of H1 on the training data.
+Run from the 3_评估_勿给编辑者 root:
+    python3 代码/train_set_h1.py check <chunk0> <chunk1> <chunk2>   # rerun the first 200 steps of the subject's training with the reconstructed order, check against train_log.txt (loss 1.518, monA 0.5399)
+    python3 代码/train_set_h1.py eval  <chunk0> <chunk1> <chunk2>   # → 结果/train_set_h1_counts.npz (can resume after interruption)
+    python3 代码/train_set_h1.py summary <chunk0> <chunk1> <chunk2> # → 结果/train_set_h1_out.txt, train_set_h1.json
+Training order: the subject (train_subject.py) and the long lr 1e-4 training (train_reference_lowlr_long.py) both do torch.manual_seed(0) → build the network → randperm, so the order is the same.
+The subject saw perm[:9,625,600] (once each); the step-10,000 checkpoint additionally saw perm[:10,240,000] after that."""
 import numpy as np, torch, sys, os, json
 torch.set_num_threads(2)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -96,7 +96,7 @@ if mode == 'summary':
                 s = stat(tag, v, ds); J[f'{tag}_{v}@{ds}'] = s
                 P(f'  {ds:13s} 原网络 acc {s["acc0"]:6.2f}  ce {s["ce0"]:.4f}   {v:9s} Δacc {s["d_acc"]:+.2f} [{s["d_acc_ci"][0]:+.2f}, {s["d_acc_ci"][1]:+.2f}]  '
                   f'Δce {s["d_ce"]:+.4f} [{s["d_ce_ci"][0]:+.4f}, {s["d_ce_ci"][1]:+.4f}]')
-        for v in ['H1', 'H1nocomp']:   # seen − unseen 的差（同一次重抽样）
+        for v in ['H1', 'H1nocomp']:   # seen − unseen difference (same resample)
             ks, ku = f'{tag}_{v}@train_seen', f'{tag}_{v}@train_unseen'; bs = f'{tag}_orig@train_seen', f'{tag}_orig@train_unseen'
             ns, nu = nfr[f'{tag}_train_seen'], nfr[f'{tag}_train_unseen']
             ds_ = r[ks + '_ok'] - r[bs[0] + '_ok']; du_ = r[ku + '_ok'] - r[bs[1] + '_ok']

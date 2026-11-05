@@ -1,0 +1,30 @@
+English translation of `train_set_h1_out.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+
+subject:
+  train_seen    original network acc  73.75  ce 0.8328   H1        Δacc -0.11 [-0.16, -0.07]  Δce +0.0034 [+0.0028, +0.0039]
+  train_seen    original network acc  73.75  ce 0.8328   H1nocomp  Δacc -0.01 [-0.06, +0.04]  Δce -0.0009 [-0.0015, -0.0003]
+  train_unseen  original network acc  72.60  ce 0.8746   H1        Δacc +0.16 [+0.12, +0.21]  Δce -0.0053 [-0.0059, -0.0048]
+  train_unseen  original network acc  72.60  ce 0.8746   H1nocomp  Δacc +0.25 [+0.20, +0.29]  Δce -0.0076 [-0.0082, -0.0070]
+  B             original network acc  70.05  ce 0.9646   H1        Δacc +0.40 [+0.34, +0.46]  Δce -0.0172 [-0.0184, -0.0161]
+  B             original network acc  70.05  ce 0.9646   H1nocomp  Δacc +0.44 [+0.37, +0.50]  Δce -0.0161 [-0.0173, -0.0148]
+  C             original network acc  71.10  ce 0.9292   H1        Δacc +0.39 [+0.34, +0.43]  Δce -0.0154 [-0.0162, -0.0145]
+  C             original network acc  71.10  ce 0.9292   H1nocomp  Δacc +0.46 [+0.41, +0.50]  Δce -0.0152 [-0.0160, -0.0143]
+  H1        g_seen − g_unseen = -0.28 [-0.34, -0.21] pp
+  H1nocomp  g_seen − g_unseen = -0.26 [-0.32, -0.20] pp
+
+lr1e-4 step 10000:
+  train_seen    original network acc  79.29  ce 0.6476   H1        Δacc -0.78 [-0.83, -0.74]  Δce +0.0238 [+0.0233, +0.0243]
+  train_seen    original network acc  79.29  ce 0.6476   H1nocomp  Δacc -0.82 [-0.86, -0.77]  Δce +0.0240 [+0.0234, +0.0245]
+  train_unseen  original network acc  77.14  ce 0.7163   H1        Δacc -0.30 [-0.35, -0.26]  Δce +0.0093 [+0.0087, +0.0098]
+  train_unseen  original network acc  77.14  ce 0.7163   H1nocomp  Δacc -0.34 [-0.39, -0.30]  Δce +0.0108 [+0.0103, +0.0114]
+  B             original network acc  73.75  ce 0.8349   H1        Δacc +0.16 [+0.10, +0.21]  Δce -0.0091 [-0.0101, -0.0081]
+  B             original network acc  73.75  ce 0.8349   H1nocomp  Δacc +0.09 [+0.03, +0.14]  Δce -0.0046 [-0.0057, -0.0036]
+  C             original network acc  74.83  ce 0.7981   H1        Δacc +0.14 [+0.10, +0.18]  Δce -0.0074 [-0.0081, -0.0067]
+  C             original network acc  74.83  ce 0.7981   H1nocomp  Δacc +0.10 [+0.06, +0.13]  Δce -0.0038 [-0.0046, -0.0031]
+  H1        g_seen − g_unseen = -0.48 [-0.54, -0.42] pp
+  H1nocomp  g_seen − g_unseen = -0.47 [-0.53, -0.41] pp
+
+According to the decision rules written in advance (subject, H1 with compensation, accuracy): supports the overfitting explanation

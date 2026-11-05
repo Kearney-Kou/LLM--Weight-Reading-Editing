@@ -1,8 +1,8 @@
-"""运行方式：在 3_评估_勿给编辑者 根目录下执行 python3 代码/targeted_controls.py
-更公平的对照：同一种修改，换一个目标。
-(1) 2B 类：把某一维特征 f 在全部 81 帧上的 W1 行置 0 + b2 均值补偿（和 2B 的做法完全一样），f 取 26（2B 选的）和其他 8 个随机维度。
-(2) 2A 类：只做 2A 的修改 1+2（把一段时间偏移的 W1 置 0 + b2 均值补偿），比较 2A 选的 |dt|=30..38 和更近的一段 |dt|=20..28、以及最远的 |dt|=32..40。
-补偿统一用 A 上随机 40000 帧的无标签 h1 均值（与 2B 的做法一致）。"""
+"""How to run: from the 3_评估_勿给编辑者 root, run python3 代码/targeted_controls.py
+Fairer controls: the same kind of edit, aimed at a different target.
+(1) 2B type: set the W1 rows of one feature dimension f over all 81 frames to 0 + b2 mean compensation (exactly as 2B did), with f = 26 (2B's choice) and 8 other random dimensions.
+(2) 2A type: only 2A's edits 1+2 (set W1 for a range of time offsets to 0 + b2 mean compensation), comparing 2A's choice |dt|=30..38 with a nearer range |dt|=20..28 and the farthest range |dt|=32..40.
+Compensation always uses the unlabelled h1 mean over 40000 random frames of A (consistent with what 2B did)."""
 import numpy as np, torch
 from wlib import Frames, predict, NAMES
 torch.set_num_threads(2)

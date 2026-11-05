@@ -1,6 +1,6 @@
-"""运行方式：在 3_评估_勿给编辑者 根目录下执行 python3 代码/final_table.py
-论文主表：所有网络在 B 上的准确率、相对原网络的变化、按句子配对 bootstrap 95% 区间（2000 次，种子 0）。
-同时保存每句的正确帧数（per_utt_correct.npz）供画图，并保存各基线网络的权重（baselines/）。"""
+"""How to run: from the 3_评估_勿给编辑者 root, run python3 代码/final_table.py
+Main results table: accuracy of all networks on B, change relative to the original network, utterance-paired bootstrap 95% intervals (2000 times, seed 0).
+Also saves the number of correct frames per utterance (per_utt_correct.npz) for plotting, and saves the weights of the baseline networks (baselines/)."""
 import numpy as np, torch, os
 from wlib import Frames, predict, NAMES
 torch.set_num_threads(2)

@@ -1,6 +1,6 @@
 import numpy as np, torch
 K = 40
-class TrainFrames:   # 训练数据用 float16 存，省内存
+class TrainFrames:   # training data stored as float16 to save memory
     def __init__(self, paths):
         ds = [np.load(p) for p in paths]
         x = np.concatenate([d['x'] for d in ds]); self.y = torch.from_numpy(np.concatenate([d['y'] for d in ds]).astype(np.int64))

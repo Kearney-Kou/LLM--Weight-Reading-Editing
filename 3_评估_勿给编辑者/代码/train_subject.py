@@ -1,15 +1,15 @@
-"""运行方式：在 3_评估_勿给编辑者 根目录下执行 python3 代码/train_subject.py
-训练被试网络：2268->1024->1024->42，ReLU，无 BN/Dropout，AdamW lr 1e-3（恒定），weight decay 0.01，batch 1024。
-训练数据：train-clean-100 随机 12000 句（种子 2026）。
-每 200 步在 dev A 的固定 10 万帧上测一次；第一次 >= 70% 时保存 subject_net.npz（被试网络）。
-然后从同一状态继续训练，在多训练 500 / 1000 / 2000 / 4000 步时各存一份参照网络 reference_plus<N>steps.npz。"""
+"""How to run: from the 3_评估_勿给编辑者 root, run python3 代码/train_subject.py
+Train the subject network: 2268->1024->1024->42, ReLU, no BN/Dropout, AdamW lr 1e-3 (constant), weight decay 0.01, batch 1024.
+Training data: 12000 random utterances of the training data (seed 2026).
+Every 200 steps, measure once on a fixed 100,000 frames of dev A; the first time it is >= 70%, save subject_net.npz (the subject network).
+Then continue training from the same state, and save a reference network reference_plus<N>steps.npz after 500 / 1000 / 2000 / 4000 further steps."""
 import numpy as np, torch, time, sys
 from wlib import Frames, accuracy
 torch.manual_seed(0); np.random.seed(0)
 torch.set_num_threads(2)
 K = 40
 
-class TrainFrames:   # 训练数据用 float16 存，省内存
+class TrainFrames:   # training data stored as float16 to save memory
     def __init__(self, paths):
         ds = [np.load(p) for p in paths]
         x = np.concatenate([d['x'] for d in ds]); self.y = torch.from_numpy(np.concatenate([d['y'] for d in ds]).astype(np.int64))

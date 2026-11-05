@@ -1,0 +1,33 @@
+English translation of `null_c.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+original network B 0.7005
+(c) f= 0: -0.1704
+(c) f= 1: -0.0631
+(c) f= 2: -0.0652
+(c) f= 3: -0.0445
+(c) f= 4: -0.0335
+(c) f= 5: -0.0246
+(c) f= 6: -0.0241
+(c) f= 7: -0.0147
+(c) f= 8: -0.0124
+(c) f= 9: -0.0078
+(c) f=10: -0.0078
+(c) f=11: -0.0040
+(c) f=12: -0.0031
+(c) f=13: -0.0009
+(c) f=14: -0.0007
+(c) f=15: -0.0023
+(c) f=16: -0.0011
+(c) f=17: -0.0008
+(c) f=18: -0.0009
+(c) f=19: -0.0009
+(c) f=20: -0.0003
+(c) f=21: +0.0004
+(c) f=22: +0.0004
+(c) f=23: +0.0005
+(c) f=24: +0.0008
+(c) f=25: +0.0007
+(c) f=26: +0.0009
+(c) f=27: -0.1707

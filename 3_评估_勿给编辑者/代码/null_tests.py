@@ -1,9 +1,9 @@
-"""运行方式：在 3_评估_勿给编辑者 根目录下执行 python3 代码/null_tests.py
-零假设检验：'随便改同一类、同样多的权重，也会有这么大的提升吗？'
-(a) 2A 的零分布：随机挑 9 个 |dt|（1..40），两侧共 18 个时间偏移，W1 置 0 + b2 均值补偿。20 次。
-(b) 2A 的零分布（不看结构）：在 W1 里随机挑 22.2% 的位置置 0（和 2A 的修改 1 改动个数相同）+ b2 均值补偿。10 次。
-(c) 2B 的完整排名：把 28 个特征维逐一去掉（置 0 + b2 均值补偿），看第 26 维排第几。
-所有结果都是 B 上相对原网络的变化。补偿统一用 A 上随机 40000 帧的无标签 h1 均值。"""
+"""How to run: from the 3_评估_勿给编辑者 root, run python3 代码/null_tests.py
+Null-hypothesis tests: 'If we change the same kind and the same number of weights at random, is there an equally large gain?'
+(a) Null distribution for 2A: pick 9 random |dt| (1..40), 18 time offsets on both sides together, set W1 to 0 + b2 mean compensation. 20 times.
+(b) Null distribution for 2A (ignoring structure): set a random 22.2% of the positions in W1 to 0 (same number of changes as 2A's edit 1) + b2 mean compensation. 10 times.
+(c) Full ranking for 2B: remove each of the 28 feature dimensions in turn (set to 0 + b2 mean compensation), and see where dimension 26 ranks.
+All results are changes relative to the original network on B. Compensation always uses the unlabelled h1 mean over 40000 random frames of A."""
 import numpy as np, torch, sys
 from wlib import Frames, predict, NAMES
 torch.set_num_threads(2)

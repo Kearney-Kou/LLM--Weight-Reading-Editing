@@ -1,11 +1,11 @@
-"""第三版补充实验 B1（post hoc，设置和预测见 结果/预测_第三版补充实验.md）：更强的"不知道答案"的通用读权重基线。
-输入、打乱顺序和主打分与 reading_baseline.py（R1/R2）完全相同。在 3_评估_勿给编辑者 根目录下运行：
+"""Supplementary experiment (post hoc; settings and predictions in 结果/预测_第三版补充实验.md): stronger generic "answer-blind" baselines for reading the weights.
+Input, permutation and main scoring are exactly the same as reading_baseline.py (R1/R2). Run from the 3_评估_勿给编辑者 root:
     python3 代码/reading_baseline_generic.py > 结果/reading_baseline_generic_out.txt
-G1：kNN 图（余弦，取并集对称化，边权 max(S,0)）→ 谱聚类成 28 组 → 组内用 R2 的 Fiedler 排序。k ∈ {5,10,20,40} × 分配 {kmeans, cluster_qr}。
-G2：整张图的谱排序（Fiedler 向量排成一条序列，切成 28 段 × 81）。图 ∈ {稠密 max(S,0), kNN k=5,10,20,40}。
-G3a：Le Roux et al. 2007 照搬：Pearson 相关 ρ → D = sqrt(−log|ρ|) → Isomap(k) 嵌入 2 维 → 对齐到 28×81 网格（两种朝向）。k ∈ {4,8,16}。
-G3b：Le Roux 适配到多条一维链：同样的距离和 kNN 图 → 测地距离 → 平均链接聚成 28 组 → 组内 1 维经典 MDS 排序。k ∈ {4,8,16}。
-主指标与 R1/R2 相同（81 行同一特征且时间严格单调）；次要指标：纯组数、ARI、纯组内 |Spearman| 中位数。"""
+G1: kNN graph (cosine, symmetrized by union, edge weights max(S,0)) → spectral clustering into 28 groups → within-group Fiedler ordering as in R2. k ∈ {5,10,20,40} × assignment {kmeans, cluster_qr}.
+G2: spectral ordering of the whole graph (Fiedler vector arranged into one sequence, cut into 28 segments × 81). Graph ∈ {dense max(S,0), kNN k=5,10,20,40}.
+G3a: Le Roux et al. 2007 applied as is: Pearson correlation ρ → D = sqrt(−log|ρ|) → Isomap(k) embedding into 2 dimensions → aligned to the 28×81 grid (two orientations). k ∈ {4,8,16}.
+G3b: Le Roux adapted to multiple 1-dimensional chains: the same distance and kNN graph → geodesic distance → average-linkage clustering into 28 groups → 1-dimensional classical MDS ordering within each group. k ∈ {4,8,16}.
+Main metric the same as R1/R2 (81 rows from the same feature, strictly monotone in time); secondary metrics: number of pure groups, ARI, median |Spearman| within pure groups."""
 import numpy as np, time, warnings
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import shortest_path, connected_components
@@ -16,12 +16,12 @@ from sklearn.manifold import Isomap
 from sklearn.metrics import adjusted_rand_score
 warnings.filterwarnings('ignore')
 
-perm = np.random.default_rng(777).permutation(2268)          # q7 第 i 行 = 原输入 perm[i]
+perm = np.random.default_rng(777).permutation(2268)          # row i of q7 = original input perm[i]
 W = np.load('../1_阶段1_读权重/net_q7.npz')['W1'].astype(np.float64)
 Wn = W / np.linalg.norm(W, axis=1, keepdims=True); S = Wn @ Wn.T; np.fill_diagonal(S, -1)
-TF, TT = perm % 28, perm // 28                                # 每行真实的特征、时间（只用于打分）
+TF, TT = perm % 28, perm // 28                                # true feature and time of each row (used only for scoring)
 
-def score(chains):   # 与 reading_baseline.py 完全相同
+def score(chains):   # exactly the same as reading_baseline.py
     ok = 0
     for c in chains:
         o = perm[np.array(c)]; t, f = o // 28, o % 28
@@ -35,7 +35,7 @@ def secondary(chains):
     rho = [abs(spearmanr(np.arange(81), TT[np.array(c)])[0]) for c in pure]
     return len(pure), adjusted_rand_score(TF, lab), (np.median(rho) if rho else float('nan'))
 
-def fiedler_order(nodes, A):   # R2 的组内排序：组内稠密 max(S,0) 的未归一化拉普拉斯
+def fiedler_order(nodes, A):   # within-group ordering of R2: unnormalized Laplacian of the dense max(S,0) within the group
     if len(nodes) <= 2: return list(nodes)
     Ssub = A[np.ix_(nodes, nodes)].copy(); np.fill_diagonal(Ssub, 0)
     Lap = np.diag(Ssub.sum(1)) - Ssub; v = np.linalg.eigh(Lap)[1][:, 1]
@@ -74,7 +74,7 @@ for nm, A in [('稠密 max(S,0)', Sp)] + [(f'kNN k={k}', knn_graph(k)) for k in 
     o = np.argsort(v, kind='stable'); chains = [list(o[81 * i: 81 * (i + 1)]) for i in range(28)]
     report(f'G2 全局谱排序，图 = {nm}', chains, time.time() - t0)
 
-# ---------- G3（Le Roux et al. 2007）----------
+# ---------- G3 (Le Roux et al. 2007) ----------
 Wc = W - W.mean(1, keepdims=True); Wc /= np.linalg.norm(Wc, axis=1, keepdims=True)
 R = Wc @ Wc.T; np.fill_diagonal(R, 1.0)
 D = np.sqrt(-np.log(np.clip(np.abs(R), 1e-12, 1.0))); np.fill_diagonal(D, 0.0)
@@ -101,7 +101,7 @@ for k in [4, 8, 16]:
         nodes = np.where(g == c)[0]
         if len(nodes) <= 2: chains.append(list(nodes)); continue
         Dg = Gd[np.ix_(nodes, nodes)] ** 2; n = len(nodes); J = np.eye(n) - 1 / n
-        v = np.linalg.eigh(-0.5 * J @ Dg @ J)[1][:, -1]               # 1 维经典 MDS
+        v = np.linalg.eigh(-0.5 * J @ Dg @ J)[1][:, -1]               # 1-dimensional classical MDS
         chains.append(list(nodes[np.argsort(v, kind='stable')]))
     report(f'G3b Le Roux 适配 测地+聚类 k={k:2d}（{ncc} 个连通分量）', chains, time.time() - t0)
 
@@ -111,11 +111,11 @@ for g in ['G1', 'G2', 'G3a', 'G3b']:
     print(f'  {g}: 正确条数 {[x[1] for x in r]}，最好 {max(x[1] for x in r)}/28，最差 {min(x[1] for x in r)}/28')
 print('对照：R1（1B 描述的流程）25/28；R2（平均链接层次聚类）0/28；1B（LLM）25/28')
 
-# ---------- 追加的探索性设置（看过上面结果后才加，不在预设网格里；k=2 用到了 1B 的"两强"观察，不算通用方法）----------
+# ---------- Additional exploratory settings (added only after seeing the results above, not in the preset grid; k=2 uses 1B's "two strong" observation and does not count as a generic method) ----------
 print('\n诊断：第 r 近邻中"同特征且 |Δt|≤2"的比例')
 for r in range(6):
     j = order_all[:, r]; print(f'  第{r + 1}近邻 {((TF[j] == TF) & (abs(TT[j] - TT) <= 2)).mean():.3f}（同特征 {(TF[j] == TF).mean():.3f}）')
-W0 = np.empty_like(Wn); W0[perm] = Wn; W0 = W0.reshape(81, 28, 1024)   # 按真实顺序排回（只用于诊断）
+W0 = np.empty_like(Wn); W0[perm] = Wn; W0 = W0.reshape(81, 28, 1024)   # put back into the true order (for diagnosis only)
 print('同一特征内、相隔 L 帧的两行的余弦相似度（对 27 个特征（去掉 26）和所有偏移取平均 / 范围）：')
 for Lg in [1, 2, 3, 5, 10, 20]:
     v = np.array([[(W0[t, f] * W0[t + Lg, f]).sum() for t in range(81 - Lg)] for f in range(28) if f != 26])

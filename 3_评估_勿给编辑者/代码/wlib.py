@@ -1,6 +1,6 @@
-"""共用工具：数据加载、上下文窗口、网络前向（numpy 权重 -> torch）。
-网络约定：x(2268) -> h1 = relu(x @ W1 + b1) (1024) -> h2 = relu(h1 @ W2 + b2) (1024) -> logits = h2 @ W3 + b3 (42)
-W 的形状是 (输入, 输出)。输入 2268 = 81 帧 x 28 维，按"时间在外、特征在内"展平：下标 = t*28 + f，t=0..80，第 40 帧是被分类的中心帧。
+"""Shared utilities: data loading, context windows, network forward pass (numpy weights -> torch).
+Network convention: x(2268) -> h1 = relu(x @ W1 + b1) (1024) -> h2 = relu(h1 @ W2 + b2) (1024) -> logits = h2 @ W3 + b3 (42)
+W has shape (input, output). Input 2268 = 81 frames x 28 dims, flattened "time outer, feature inner": index = t*28 + f, t=0..80, frame 40 is the centre frame being classified.
 """
 import numpy as np, torch
 K = 40
@@ -12,7 +12,7 @@ class Frames:
         self.x = torch.from_numpy(d['x'].astype(np.float32))
         self.y = torch.from_numpy(d['y'].astype(np.int64))
         self.lens = d['lens']
-        # 每句前后各补 K 个零帧（不跨句）
+        # pad K zero frames before and after each utterance (not across utterances)
         L = self.lens
         padded_start = np.concatenate([[0], np.cumsum(L + 2 * K)[:-1]])
         frame_start = np.concatenate([[0], np.cumsum(L)[:-1]])

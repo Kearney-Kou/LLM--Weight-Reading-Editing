@@ -1,0 +1,56 @@
+English translation of `reading_baseline_generic_out.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+G1 kNN k= 5 (1 connected components)+spectral clustering[kmeans]       correct  0/28  pure groups  0  ARI 0.409  pure|Spearman| median nan  time   3.0s  group sizes(first 5/last 3) [450, 207, 144, 100, 93]/[39, 38, 38]
+G1 kNN k= 5 (1 connected components)+spectral clustering[cluster_qr]   correct  0/28  pure groups  0  ARI 0.581  pure|Spearman| median nan  time   0.6s  group sizes(first 5/last 3) [158, 154, 133, 133, 111]/[42, 41, 39]
+G1 kNN k=10 (1 connected components)+spectral clustering[kmeans]       correct  0/28  pure groups  0  ARI 0.081  pure|Spearman| median nan  time   3.3s  group sizes(first 5/last 3) [1029, 116, 85, 71, 70]/[29, 28, 28]
+G1 kNN k=10 (1 connected components)+spectral clustering[cluster_qr]   correct  0/28  pure groups  0  ARI 0.225  pure|Spearman| median nan  time   0.6s  group sizes(first 5/last 3) [270, 266, 140, 106, 104]/[47, 43, 43]
+G1 kNN k=20 (1 connected components)+spectral clustering[kmeans]       correct  0/28  pure groups  0  ARI 0.092  pure|Spearman| median nan  time   3.6s  group sizes(first 5/last 3) [832, 199, 108, 84, 82]/[26, 26, 20]
+G1 kNN k=20 (1 connected components)+spectral clustering[cluster_qr]   correct  0/28  pure groups  0  ARI 0.147  pure|Spearman| median nan  time   0.7s  group sizes(first 5/last 3) [208, 154, 144, 112, 102]/[47, 46, 43]
+G1 kNN k=40 (1 connected components)+spectral clustering[kmeans]       correct  0/28  pure groups  0  ARI 0.056  pure|Spearman| median nan  time   2.3s  group sizes(first 5/last 3) [1000, 85, 82, 73, 70]/[26, 22, 19]
+G1 kNN k=40 (1 connected components)+spectral clustering[cluster_qr]   correct  0/28  pure groups  0  ARI 0.116  pure|Spearman| median nan  time   0.7s  group sizes(first 5/last 3) [253, 109, 109, 105, 105]/[44, 44, 43]
+G2 global spectral ordering, graph = dense max(S,0)               correct  0/28  pure groups  0  ARI 0.011  pure|Spearman| median nan  time   1.9s  group sizes(first 5/last 3) [81, 81, 81, 81, 81]/[81, 81, 81]
+G2 global spectral ordering, graph = kNN k=5                   correct  0/28  pure groups  0  ARI 0.145  pure|Spearman| median nan  time   2.0s  group sizes(first 5/last 3) [81, 81, 81, 81, 81]/[81, 81, 81]
+G2 global spectral ordering, graph = kNN k=10                  correct  0/28  pure groups  0  ARI 0.082  pure|Spearman| median nan  time   2.0s  group sizes(first 5/last 3) [81, 81, 81, 81, 81]/[81, 81, 81]
+G2 global spectral ordering, graph = kNN k=20                  correct  0/28  pure groups  0  ARI 0.049  pure|Spearman| median nan  time   2.1s  group sizes(first 5/last 3) [81, 81, 81, 81, 81]/[81, 81, 81]
+G2 global spectral ordering, graph = kNN k=40                  correct  0/28  pure groups  0  ARI 0.038  pure|Spearman| median nan  time   2.0s  group sizes(first 5/last 3) [81, 81, 81, 81, 81]/[81, 81, 81]
+G3a Le Roux as is, Isomap2D k= 4, segmented by coordinate 1   correct  0/28  pure groups  0  ARI 0.086  pure|Spearman| median nan  time   1.0s  group sizes(first 5/last 3) [81, 81, 81, 81, 81]/[81, 81, 81]
+G3a Le Roux as is, Isomap2D k= 4, segmented by coordinate 2   correct  0/28  pure groups  0  ARI 0.069  pure|Spearman| median nan  time   1.0s  group sizes(first 5/last 3) [81, 81, 81, 81, 81]/[81, 81, 81]
+G3a Le Roux as is, Isomap2D k= 8, segmented by coordinate 1   correct  0/28  pure groups  0  ARI 0.031  pure|Spearman| median nan  time   1.3s  group sizes(first 5/last 3) [81, 81, 81, 81, 81]/[81, 81, 81]
+G3a Le Roux as is, Isomap2D k= 8, segmented by coordinate 2   correct  0/28  pure groups  0  ARI 0.026  pure|Spearman| median nan  time   1.3s  group sizes(first 5/last 3) [81, 81, 81, 81, 81]/[81, 81, 81]
+G3a Le Roux as is, Isomap2D k=16, segmented by coordinate 1   correct  0/28  pure groups  0  ARI 0.017  pure|Spearman| median nan  time   1.6s  group sizes(first 5/last 3) [81, 81, 81, 81, 81]/[81, 81, 81]
+G3a Le Roux as is, Isomap2D k=16, segmented by coordinate 2   correct  0/28  pure groups  0  ARI 0.019  pure|Spearman| median nan  time   1.6s  group sizes(first 5/last 3) [81, 81, 81, 81, 81]/[81, 81, 81]
+G3b Le Roux adapted, geodesic+clustering k= 4 (1 connected components)     correct  0/28  pure groups  1  ARI 0.261  pure|Spearman| median 0.879  time   1.0s  group sizes(first 5/last 3) [407, 313, 239, 197, 110]/[24, 22, 18]
+G3b Le Roux adapted, geodesic+clustering k= 8 (1 connected components)     correct  0/28  pure groups  0  ARI 0.126  pure|Spearman| median nan  time   1.4s  group sizes(first 5/last 3) [447, 157, 147, 125, 121]/[24, 21, 19]
+G3b Le Roux adapted, geodesic+clustering k=16 (1 connected components)     correct  0/28  pure groups  0  ARI 0.107  pure|Spearman| median nan  time   1.7s  group sizes(first 5/last 3) [299, 214, 210, 183, 176]/[12, 8, 5]
+
+Summary (22 settings, all reported):
+  G1: number correct [0, 0, 0, 0, 0, 0, 0, 0], best 0/28, worst 0/28
+  G2: number correct [0, 0, 0, 0, 0], best 0/28, worst 0/28
+  G3a: number correct [0, 0, 0, 0, 0, 0], best 0/28, worst 0/28
+  G3b: number correct [0, 0, 0], best 0/28, worst 0/28
+Comparison: R1 (the procedure described by 1B) 25/28; R2 (average-linkage hierarchical clustering) 0/28; 1B (LLM) 25/28
+
+Diagnosis: fraction of the r-th nearest neighbours that are "same feature and |Δt|≤2"
+  neighbour 1 0.995 (same feature 0.995)
+  neighbour 2 0.985 (same feature 0.986)
+  neighbour 3 0.893 (same feature 0.916)
+  neighbour 4 0.897 (same feature 0.930)
+  neighbour 5 0.044 (same feature 0.849)
+  neighbour 6 0.020 (same feature 0.752)
+Cosine similarity of two rows of the same feature L frames apart (mean over 27 features (26 removed) and all offsets / range):
+  L= 1: mean +0.777, range after averaging by offset [+0.721, +0.855]
+  L= 2: mean +0.548, range after averaging by offset [+0.466, +0.628]
+  L= 3: mean +0.314, range after averaging by offset [+0.221, +0.414]
+  L= 5: mean +0.108, range after averaging by offset [-0.046, +0.210]
+  L=10: mean +0.004, range after averaging by offset [-0.083, +0.055]
+  L=20: mean -0.005, range after averaging by offset [-0.032, +0.019]
+
+Exploratory addition: G1 with k ∈ {2,3,4}
+G1* kNN k= 2 (10 connected components)+spectral clustering[kmeans]     correct  0/28  pure groups  8  ARI 0.807  pure|Spearman| median 0.439  time   1.0s  group sizes(first 5/last 3) [214, 137, 91, 91, 88]/[41, 40, 40]
+G1* kNN k= 2 (10 connected components)+spectral clustering[cluster_qr] correct  0/28  pure groups  8  ARI 0.840  pure|Spearman| median 0.439  time   0.8s  group sizes(first 5/last 3) [171, 98, 97, 97, 91]/[41, 41, 40]
+G1* kNN k= 3 (5 connected components)+spectral clustering[kmeans]      correct  0/28  pure groups  5  ARI 0.616  pure|Spearman| median 0.618  time   2.5s  group sizes(first 5/last 3) [375, 115, 115, 106, 99]/[38, 37, 35]
+G1* kNN k= 3 (5 connected components)+spectral clustering[cluster_qr]  correct  0/28  pure groups  3  ARI 0.721  pure|Spearman| median 0.637  time   0.6s  group sizes(first 5/last 3) [256, 119, 118, 105, 102]/[39, 38, 38]
+G1* kNN k= 4 (1 connected components)+spectral clustering[kmeans]      correct  0/28  pure groups  1  ARI 0.560  pure|Spearman| median 0.771  time   3.1s  group sizes(first 5/last 3) [285, 246, 189, 98, 95]/[38, 37, 34]
+G1* kNN k= 4 (1 connected components)+spectral clustering[cluster_qr]  correct  0/28  pure groups  1  ARI 0.649  pure|Spearman| median 0.420  time   0.6s  group sizes(first 5/last 3) [251, 183, 123, 112, 107]/[42, 41, 38]

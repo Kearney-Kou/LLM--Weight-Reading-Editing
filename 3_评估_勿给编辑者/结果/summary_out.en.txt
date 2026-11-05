@@ -1,0 +1,49 @@
+English translation of `summary_out.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+B: 1352 utterances, 980855 frames, 40 speakers
+C: 1500 utterances, 1914753 frames, 251 speakers
+n1_H1@C                      acc  71.49  Δ +0.39  utt-CI [+0.34, +0.43]  spk-CI [+0.34, +0.43]
+n1_H1_nocomp@B               acc  70.48  Δ +0.44  utt-CI [+0.38, +0.50]  spk-CI [+0.37, +0.50]
+n1_H1_nocomp@C               acc  71.56  Δ +0.46  utt-CI [+0.41, +0.50]  spk-CI [+0.41, +0.50]
+n1_H2_nocomp@B               acc  70.15  Δ +0.10  utt-CI [+0.07, +0.13]  spk-CI [+0.07, +0.13]
+n1_H2_nocomp@C               acc  71.18  Δ +0.08  utt-CI [+0.06, +0.10]  spk-CI [+0.06, +0.10]
+n1_H2cal@B                   acc  70.26  Δ +0.21  utt-CI [+0.18, +0.24]  spk-CI [+0.17, +0.25]
+n1_H2cal@C                   acc  71.28  Δ +0.18  utt-CI [+0.16, +0.20]  spk-CI [+0.16, +0.21]
+n1_H3@C                      acc  71.55  Δ +0.45  utt-CI [+0.40, +0.49]  spk-CI [+0.40, +0.49]
+n1_combo_2A_f26@C            acc  71.57  Δ +0.47  utt-CI [+0.42, +0.51]  spk-CI [+0.42, +0.51]
+n1_ed2A@C                    acc  71.49  Δ +0.39  utt-CI [+0.35, +0.43]  spk-CI [+0.35, +0.43]
+n1_ed2A_E12@C                acc  71.50  Δ +0.39  utt-CI [+0.35, +0.44]  spk-CI [+0.35, +0.44]
+n1_ed2B@C                    acc  71.28  Δ +0.18  utt-CI [+0.16, +0.20]  spk-CI [+0.16, +0.21]
+n1_ed2B_E1@C                 acc  71.18  Δ +0.07  utt-CI [+0.05, +0.09]  spk-CI [+0.05, +0.09]
+n1_magprune22@C              acc  71.13  Δ +0.03  utt-CI [+0.02, +0.04]  spk-CI [+0.02, +0.04]
+n1_original@B                acc  70.05
+n1_original@C                acc  71.10
+n1_ref_fresh_lr1e-3@B        acc  70.35  Δ +0.30  utt-CI [+0.18, +0.43]  spk-CI [+0.16, +0.46]
+n1_ref_fresh_lr1e-3@C        acc  71.36  Δ +0.26  utt-CI [+0.17, +0.35]  spk-CI [+0.17, +0.36]
+n1_ref_lr1e-4@C              acc  73.99  Δ +2.89  utt-CI [+2.82, +2.96]  spk-CI [+2.81, +2.97]
+n1_ref_plus2000@C            acc  71.71  Δ +0.61  utt-CI [+0.52, +0.70]  spk-CI [+0.51, +0.71]
+n1_ref_samestate_lr1e-4@B    acc  72.87  Δ +2.83  utt-CI [+2.74, +2.92]  spk-CI [+2.71, +2.94]
+n1_ref_samestate_lr1e-4@C    acc  73.96  Δ +2.86  utt-CI [+2.79, +2.92]  spk-CI [+2.78, +2.93]
+s1_H1@B                      acc  70.47  Δ +0.46  utt-CI [+0.40, +0.53]  spk-CI [+0.39, +0.53]
+s1_H1@C                      acc  71.38  Δ +0.41  utt-CI [+0.37, +0.46]  spk-CI [+0.37, +0.46]
+s1_H2@B                      acc  70.07  Δ +0.07  utt-CI [+0.04, +0.09]  spk-CI [+0.04, +0.09]
+s1_H2@C                      acc  71.03  Δ +0.06  utt-CI [+0.04, +0.08]  spk-CI [+0.05, +0.08]
+s1_H2cal@B                   acc  70.21  Δ +0.21  utt-CI [+0.17, +0.24]  spk-CI [+0.17, +0.24]
+s1_H2cal@C                   acc  71.16  Δ +0.18  utt-CI [+0.16, +0.21]  spk-CI [+0.16, +0.21]
+s1_H3@B                      acc  70.51  Δ +0.51  utt-CI [+0.45, +0.57]  spk-CI [+0.45, +0.57]
+s1_H3@C                      acc  71.44  Δ +0.47  utt-CI [+0.43, +0.51]  spk-CI [+0.43, +0.51]
+s1_original@B                acc  70.00
+s1_original@C                acc  70.97
+s2_H1@B                      acc  70.49  Δ +0.45  utt-CI [+0.40, +0.51]  spk-CI [+0.39, +0.51]
+s2_H1@C                      acc  71.47  Δ +0.46  utt-CI [+0.42, +0.51]  spk-CI [+0.41, +0.51]
+s2_H2@B                      acc  70.12  Δ +0.08  utt-CI [+0.05, +0.10]  spk-CI [+0.06, +0.10]
+s2_H2@C                      acc  71.08  Δ +0.07  utt-CI [+0.05, +0.09]  spk-CI [+0.05, +0.09]
+s2_H2cal@B                   acc  70.21  Δ +0.17  utt-CI [+0.14, +0.21]  spk-CI [+0.14, +0.21]
+s2_H2cal@C                   acc  71.19  Δ +0.18  utt-CI [+0.16, +0.20]  spk-CI [+0.16, +0.21]
+s2_H3@B                      acc  70.56  Δ +0.52  utt-CI [+0.46, +0.58]  spk-CI [+0.45, +0.59]
+s2_H3@C                      acc  71.51  Δ +0.51  utt-CI [+0.46, +0.55]  spk-CI [+0.46, +0.55]
+s2_original@B                acc  70.04
+s2_original@C                acc  71.01
+C: H1 − ed2A_E12 →  -0.01  utt-CI [-0.03, +0.01]  spk-CI [-0.03, +0.01]

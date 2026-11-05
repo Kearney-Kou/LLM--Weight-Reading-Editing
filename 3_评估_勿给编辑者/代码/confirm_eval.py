@@ -1,4 +1,4 @@
-"""确认性检验（按预注册）。对每个 (网络, 测试集) 计算每句正确帧数，存到 confirm_counts.npz。"""
+"""Confirmatory test (as pre-registered). For each (network, test set), compute the number of correct frames per utterance and save it to confirm_counts.npz."""
 import numpy as np, torch, sys, os
 from wlib import Frames, predict
 from heur import H1, H2, H3, H2cal, zero_comp, rownorm_mask, feat_mask, min_eta_feature
@@ -23,7 +23,7 @@ if part == 'net1':
             'H1': H1(w0), 'H3': H3(w0), 'H2cal': H2cal(w0),
             'ref_plus2000': L(E + 'reference_plus2000steps.npz'), 'ref_lr1e-4': L(E + 'reference_lr1e-4_plus2000steps.npz')}
     for k, w in nets.items(): run('n1_' + k, w, [('C', C)])
-    # 新增变体（B 和 C 都评估）：2B 完整的非 LLM 基线；机制分离（只删不补偿）
+    # Added variants (evaluated on both B and C): 2B's full non-LLM baseline; mechanism separation (delete only, no compensation)
     extra = {'H2cal': nets['H2cal'], 'H1_nocomp': zero_comp(w0, rownorm_mask(w0)[0], comp=False), 'H2_nocomp': zero_comp(w0, feat_mask(26), comp=False)}
     run('n1_original', w0, [('B', B)])
     for k, w in extra.items(): run('n1_' + k, w, [('B', B), ('C', C)])
@@ -34,5 +34,5 @@ if part.startswith('seed'):
         run(f's{s}_' + k, w, [('B', B), ('C', C)])
 if part == 'freshref':
     run('n1_ref_fresh_lr1e-3', L('网络/reference_fresh_lr1e-3_plus2000steps.npz'), [('B', B), ('C', C)])
-if part == 'samestate':   # 事后补做（未预注册）：保留原 AdamW 状态、lr 1e-4、+2000 步
+if part == 'samestate':   # Done afterwards (not pre-registered): keep the original AdamW state, lr 1e-4, +2000 steps
     run('n1_ref_samestate_lr1e-4', L('网络/reference_samestate_lr1e-4_plus2000steps.npz'), [('B', B), ('C', C)])

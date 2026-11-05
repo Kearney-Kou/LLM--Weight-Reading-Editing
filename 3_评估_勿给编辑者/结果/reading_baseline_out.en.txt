@@ -1,0 +1,7 @@
+English translation of `reading_baseline_out.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+R1 mutual-nearest-neighbour graph: 56 components, 25 paths of length exactly 81, of which 25 fully correct; component size distribution (size:count) {10: 1, 81: 25, 162: 1}
+R2 hierarchical clustering + spectral ordering: of 28 groups, 0 groups with "all 81 rows from the same feature", 0 fully correct (including order)
+time 1.9s (2-core CPU); result of 1B (LLM): 25/28 fully correct

@@ -1,5 +1,5 @@
-"""审稿意见 3：音系相关 r 能否区分"逐个标签都对"和"音系相近的标签互换"？
-用研究者自建的音系特征表（不是 1C 的那张），在原网络 W3 上复现 1C 的检验，再比较几类更难的替代映射。"""
+"""Check of the label-mapping test: can the phonological correlation r distinguish "every label correct" from "phonologically similar labels swapped"?
+Using a phonological feature table built by the researcher (not the one from 1C), reproduce 1C's test on W3 of the original network, then compare several harder alternative mappings."""
 import numpy as np, sys
 W3 = np.load(sys.argv[1])['W3'].astype(np.float64)          # 1024 x 42
 P = 'AA AE AH AO AW AY B CH D DH EH ER EY F G HH IH IY JH K L M N NG OW OY P R S SH T TH UH UW V W Y Z ZH'.split()
@@ -17,7 +17,7 @@ F = np.array([[t in desc[p].split() for t in vocab] for p in P], float)
 Fn = F / np.linalg.norm(F, axis=1, keepdims=True); S_ph = Fn @ Fn.T
 M = W3[:, 1:40]; M = M / np.linalg.norm(M, axis=0, keepdims=True); S_w = M.T @ M
 iu = np.triu_indices(39, 1)
-def r_of(perm):   # perm[i] = 第 i 个 W3 列被赋予的音素下标
+def r_of(perm):   # perm[i] = the phoneme index assigned to the i-th W3 column
     return np.corrcoef(S_w[iu], S_ph[np.ix_(perm, perm)][iu])[0, 1]
 ident = np.arange(39); r0 = r_of(ident)
 rng = np.random.default_rng(0)
@@ -28,7 +28,7 @@ for i in range(39):
     for j in range(i + 1, 39):
         p = ident.copy(); p[[i, j]] = p[[j, i]]; swaps.append((r_of(p), P[i], P[j], S_ph[i, j]))
 sw = np.array([s[0] for s in swaps]); simp = np.array([s[3] for s in swaps])
-close = simp >= np.quantile(simp, 0.9)      # 音系最相近的 10% 的标签对
+close = simp >= np.quantile(simp, 0.9)      # the 10% of label pairs that are phonologically most similar
 def within_class_shuffle(n):
     groups = {}
     for k, p in enumerate(P): groups.setdefault(desc[p].split()[1] if p in C else 'vowel', []).append(k)

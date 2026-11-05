@@ -1,0 +1,11 @@
+English translation of `label_swap_out.txt`. The Chinese original is the authoritative record. Script output; numbers and identifiers are unchanged.
+
+---
+
+True mapping r = 0.570
+Random permutations (5000 times): mean -0.000, sd 0.039, max 0.163, z = 14.7
+Whole mapping shifted by one: r = 0.033
+Single-pair swaps (all 741 pairs): r range [0.389, 0.583]; pairs with r higher than the true mapping: 4; pairs differing from the true mapping by <0.01: 78
+After swapping the 10% of label pairs that are phonologically most similar (89 pairs): r range [0.535, 0.571], mean drop 0.0114
+Examples (voicing pairs): B/P 0.554, D/T 0.556, F/V 0.550, G/K 0.547, IH/IY 0.569, S/Z 0.563, UH/UW 0.568
+Grouped by manner of articulation, shuffled randomly within groups (2000 times; groups vowel:15, stop:6, affricate:2, fricative:9, liquid:2, nasal:3, glide:2): r mean 0.428, range [0.360, 0.504], fraction ≥ true mapping 0.000
